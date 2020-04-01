@@ -4,6 +4,7 @@ This project is an attempt to prototype a few utilities for the extension reposi
 
 At this point, there is a simple extension repository specification file in YAML format (an example can be found in `playground\quarkus-extensions-repo.yaml`)
 that lists Maven coordinates of the existing platform BOMs as well as Maven coordinates of extensions that aren't appearing in any platform.
+Theoretically, this kind of file could be exposed to the users and be defining the content of an extension repository (e.g. Quarkus community extension repository).
 
 There is a repository builder (implemented in the `builder` module) that can parse the spec yaml file and build the corresponding object model that
 allows to perform all sorts of queries accross the repository, such as:
@@ -30,13 +31,18 @@ For a given platform release:
 For a given extension:
 
 * list available versions of the extension (i.e. releases of the extension);
-
-(The list could be easily extended)
+* (The list could be easily extended)
 
 For a given extension release:
 
 * Quarkus Core versions it was found to be compatible with;
 * Platforms it is appearing in.
+
+The builder may take time to process the spec file and initialize the in-memory representation of the repo. However, once built, the repo
+could be persisted in another form that is more optimal to initialize from, if necessary. The idea to have the simplest possible format
+exposed to the users and admins to define the extension repository.
+
+Also, just in case, the repo could also be initialized in a static-init method.
 
 ## To give it a try
 
