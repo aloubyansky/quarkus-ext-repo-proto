@@ -18,7 +18,7 @@
 		<maven-plugin-annotations.version>3.6.0</maven-plugin-annotations.version>
 		<maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
 
-		<snakeyaml.version>1.25</snakeyaml.version>
+		<snakeyaml.version>1.26</snakeyaml.version>
 	</properties>
 
 	<modules>
